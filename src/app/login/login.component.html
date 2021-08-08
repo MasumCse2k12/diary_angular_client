@@ -1,0 +1,28 @@
+<div class="login-page">
+    <div class="login-form">
+        <form [formGroup]="loginForm" class="row mb-0" (ngSubmit)="onSubmit()">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="username" formControlName="username" type="text"
+                    [ngClass]="{ 'is-invalid': f.username.invalid && (f.username.dirty || f.username.touched) }">
+                <label for="username">Your User Name</label>
+                <div *ngIf="f.username.invalid && (f.username.dirty || f.username.touched)" class="invalid-feedback">
+                    <!-- <small *ngIf="f.username.errors.required" class="red-text right">User Name is required</small> -->
+                </div>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">lock</i>
+                <input id="password" formControlName="password" type="password"
+                    [ngClass]="{ 'is-invalid': f.password.invalid && (f.password.dirty || f.password.touched) }">
+                <label for="password">Your Password</label>
+                <div *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)" class="invalid-feedback">
+                    <!-- <small *ngIf="f.password.errors.required" class="red-text right">Password is required</small> -->
+                </div>
+            </div>
+            <div class="input-field col s12 m6 right-align">
+                <button class="btn green waves-effect waves-green lighten-1" [disabled]="loginForm.invalid"
+                    type="submit">Login<i class="material-icons right">login</i> </button>
+            </div>
+        </form>
+    </div>
+</div>

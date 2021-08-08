@@ -1,0 +1,165 @@
+<div class="main-wrapper" *ngIf="noteCategoeyList.length>0">
+    <br>;&nbsp;&nbsp;
+    <button class="modal-trigger btn modal-close waves-effect waves-green green" href="#categoryMpdal">
+        <span>
+            <mat-icon>add</mat-icon>&nbsp;&nbsp;Manage Categories
+        </span>
+    </button>
+    &nbsp;&nbsp;
+    <button class="modal-trigger btn modal-close waves-effect waves-green green" href="#noteInfoModal">
+        <span>
+            <mat-icon>add</mat-icon>&nbsp;&nbsp;Add Note
+        </span>
+    </button>
+    <br><br>
+    <mat-sidenav-container>
+        <mat-sidenav #sidenav>
+            <div class="right-align">
+                <button mat-icon-button color="warn" (click)="sidenav.toggle()">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </div>
+            <ul class="collapsible">
+                <li *ngFor="let ml of noteCategoeyList">
+                    <div class="collapsible-header"><i class="material-icons left">add</i>{{ml.name}}</div>
+                </li>
+                <div class="collapsible-body">
+                    <a *ngFor="let xx of noteCategoeyList" (click)="sidenav.toggle()" routerLink="" class="w100">
+                        <i class="material-icons left">remove</i>{{xx.name}}</a>
+                </div>
+            </ul>
+
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+            <nav class="z-depth-3">
+                <div class="nav-wrapper">
+                    <mat-toolbar color="primary">
+                        <mat-toolbar-row>
+                            <a mat-flat-button color="primary" routerLink="/home/dashboard"><img
+                                    src="assets/image/logo.png" height="45" alt=""></a>
+                            <button mat-icon-button class="mobileMenuButton">
+                                <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+                            </button>
+                            <span *ngFor="let ml of noteCategoeyList" class="desktopMenuButton">
+                                <a mat-button class="nav-button text-capitalize" routerLink="./{{ml.id}}">
+                                    &nbsp;{{ml.name}}&nbsp;
+                                </a>
+                            </span>
+                            <span style="position:absolute;right:0">
+                                <button mat-button [matMenuTriggerFor]="profile">
+                                    <mat-icon>person_pin</mat-icon>&nbsp;&nbsp;{{loggedInUserData.username}}
+                                    <mat-menu #profile="matMenu">
+                                        <button mat-menu-item class="modal-trigger" href="#profileModal">
+                                            <span>
+                                                <mat-icon>perm_identity</mat-icon>&nbsp;&nbsp;Profile
+                                            </span>
+                                        </button>
+                                        <button mat-menu-item (click)="logout()">
+                                            <span>
+                                                <mat-icon>power_settings_new</mat-icon>&nbsp;&nbsp;Logout
+                                            </span>
+                                        </button>
+                                    </mat-menu>
+                                </button>
+                            </span>
+                        </mat-toolbar-row>
+                    </mat-toolbar>
+                </div>
+            </nav>
+        </mat-sidenav-content>
+
+    </mat-sidenav-container>
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
+<div id="profileModal" class="modal">
+    <div class="modal-content">
+        <h6><b>User Profile</b></h6>
+        <hr>
+        <table>
+            <tr>
+                <th width="120px">Username</th>
+                <td>{{loggedInUserData.username}}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td class="text-capitalize">{{loggedInUserData.name}}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{loggedInUserData.status ? 'Active' : 'Inactive'}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn modal-close waves-effect waves-light red"><i
+                class="material-icons left">close</i>Close</button>
+    </div>
+</div>
+
+<div id="categoryMpdal" class="modal">
+    <form [formGroup]="categoryGroup" class="row mb-0" (ngSubmit)="onSubmitNoteCategory()">
+        <div class="modal-content">
+            <h6><b>Note Category</b></h6>
+            <hr>
+            <div class="row">
+                <br>
+                <div class="col s12">
+                    <div class="input-field">
+                        <input id="name" formControlName="name" type="text" class="validate"
+                            required>
+                        <label for="name">Category Name</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn modal-close waves-effect waves-green green"><i
+                    class="material-icons left">save</i>Submit</button>&nbsp;&nbsp;
+            <button type="button" class="btn modal-close waves-effect waves-red red"><i
+                    class="material-icons left">close</i>Close</button>
+        </div>
+    </form>
+</div>
+
+<div id="noteInfoModal" class="modal">
+    <form [formGroup]="noteInfoGroup" class="row mb-0" (ngSubmit)="onSubmitNoteInfo()">
+        <div class="modal-content">
+            <h6><b>Note Info</b></h6>
+            <hr>
+            <div class="row">
+                <br>
+                <div class="col s12">
+                    <input id="username" #username formControlName="username" type="hidden" class="validate">
+                    <div class="input-field">
+                        <select class="browser-default" id="category" formControlName="category" >
+                            <option value="0">Select Note Category</option>
+                        <option *ngFor="let category of noteCategoeyList" [value]="category.id">
+                            {{ category.name }}
+                        </option>
+                       </select>
+                        
+                    </div>
+                    <div class="input-field">
+                        <input id="title" formControlName="title" type="text" class="validate" required>
+                        <label for="title">Title</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="content" formControlName="content" type="text" class="validate"
+                            required>
+                        <label for="content">Content</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn modal-close waves-effect waves-green green"><i
+                    class="material-icons left">save</i>Submit</button>&nbsp;&nbsp;
+            <button type="button" class="btn modal-close waves-effect waves-red red"><i
+                    class="material-icons left">close</i>Close</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,131 @@
+body {
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    padding: 0;
+    margin: 0;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+a,
+a:active,
+a:visited,
+a:hover {
+    /* color: #369369; */
+    text-decoration: none;
+}
+
+.brand-color {
+    color: #98c8ec !important;
+}
+
+.brand-bg {
+    background-color: #98c8ec !important;
+    color: #ffffff !important;
+}
+
+.drop-shadow {
+    box-shadow: 0px 2px 10px #555555;
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+/*Login page*/
+
+.login-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #f1f1f1;
+    z-index: 999;
+    transition: 0.5s;
+}
+
+.login-page .login-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 25%;
+    height: auto;
+    transition: 0.5s;
+    transform: translate(-50%, -50%);
+    padding: 50px 15px 25px;
+    background: #ffffff;
+    box-shadow: 0px 0px 15px #cdcdcd;
+    border-radius: 10px;
+    border-left: 5px solid #98c8ec;
+    border-right: 5px solid #98c8ec;
+}
+
+@media (max-width: 1900px) {
+    .login-page .login-form {
+        width: 30%;
+    }
+}
+
+@media (max-width: 1600px) {
+    .login-page .login-form {
+        width: 40%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .login-page .login-form {
+        width: 50%;
+    }
+}
+
+@media (max-width: 991px) {
+    .login-page .login-form {
+        width: 60%;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-page .login-form {
+        width: 80%;
+    }
+}
+
+@media (max-width: 600px) {
+    .login-page .login-form {
+        width: 90%;
+    }
+}
+
+@media (max-width: 400px) {
+    .login-page .login-form {
+        width: 100%;
+    }
+}
+
+#errorAlert {
+    position: fixed;
+    bottom: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    z-index: 999999;
+    transition: 0.3s;
+}
+
+#hidePass {
+    display: none;
+}
+
+.ng-valid[required],
+.ng-valid.required {
+    border-bottom: 1px solid #42a948; /* green */
+}
+
+.ng-invalid:not(form) {
+    border-bottom: 1px solid #a94442; /* red */
+}

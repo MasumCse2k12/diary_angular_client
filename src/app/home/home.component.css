@@ -1,0 +1,58 @@
+.navbar-fixed {
+    position: fixed !important;
+    width: 100%;
+}
+
+.content {
+    position: absolute;
+    top: 65px;
+    width: 100%;
+    height: calc(100vh - 70px);
+    padding-top: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+.mat-drawer {
+    position: fixed;
+    min-width: 100%;
+}
+
+.mat-drawer-backdrop {
+    position: fixed !important;
+}
+
+.mat-drawer-container {
+    z-index: 2 !important;
+}
+
+@media (min-width: 767px) {
+    .mobileMenuButton {
+        display: none;
+    }
+}
+@media (max-width: 768px) {
+    .desktopMenuButton {
+        display: none;
+    }
+}
+
+.mat-menu-content:not(:empty) {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.nav-button {
+    height: 65px;
+    line-height: 65px;
+    color: #ffffff !important;
+}
+
+.w100 {
+    display: flex;
+    width: 100%;
+}

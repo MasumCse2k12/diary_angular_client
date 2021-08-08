@@ -1,0 +1,63 @@
+.input-group-text.brand-bg {
+    display: inline-flex;
+    min-width: 45px;
+    justify-content: center;
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.p-5{
+    padding: 5px;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.collapsible-body {
+    padding: 15px;
+}
+
+.card .card-content {
+    padding: 10px;
+}
+
+.hand {
+    cursor: pointer;
+}
+
+.card {
+    margin-top: 0;
+}
+
+.card-title h6 {
+    padding: 10px 5px 10px;
+    margin: 5px 0;
+}
+
+a.link {
+    text-decoration: underline;
+}
+
+.filter-selection{
+    position: relative;
+    background-color:#cdcdcd;
+    border-radius: 25px;
+    /* margin: 0 5px 5px 0; */
+    margin-right: 5px;
+    font-size: 13px;
+    display: inline-block;
+    padding: 5px 10px;
+    line-height: 10px;
+}
+
+.filter-selection i.material-icons{
+    font-size: 13px; 
+}
+
+table.narrow td{
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
