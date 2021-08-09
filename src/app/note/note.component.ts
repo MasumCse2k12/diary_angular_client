@@ -26,32 +26,39 @@ export class NoteComponent implements OnInit {
       this.categoryId = Number(categoryId);
     }
     this.noteInfoList = new Array;
-    this.fetchNoteInfo()
   }
 
   ngOnInit(): void {
+    this._Activatedroute.params.subscribe(routeParams => {
+      console.log("CCCCCC ID : " + routeParams.id);
+      this.fetchNoteInfo(routeParams.id);
+    });
   }
 
   onTableDataChange(page: any) {
     this.page = page;
-    this.fetchNoteInfo();
+    this.fetchNoteInfo(0);
   }
 
   onTableSizeChange(tableSize: any): void {
     this.tableSize = tableSize;
     this.page = 1;
-    this.fetchNoteInfo();
+    this.fetchNoteInfo(0);
   }
 
-  fetchNoteInfo() {
+  fetchNoteInfo(categoryId: number) {
     let request = new NoteSearchCriteria();
-    request.category = this.categoryId;
+    request.category = categoryId;
     this.noteService.searchNoteInfo(request).subscribe(
       (response) => {
         console.log("noteInfoList :" + JSON.stringify(response));
         if (response.success) {
           this.errorMessage = '';
-          this.noteInfoList = response.noteInfoList;
+          if (response.total > 0) {
+            this.noteInfoList = response.noteInfoList;
+          }else{
+            this.noteInfoList = new Array;
+          }
           this.count = response.total;
         } else {
           this.errorMessage = response.message;

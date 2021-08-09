@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(private utilityService: UtilityService, private noteService: NoteService) {
     this.noteInfoList = new Array;
-    this.fetchNoteInfo()
+    this.fetchNoteInfo();
   }
 
   ngOnInit(): void {
