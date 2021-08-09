@@ -1,4 +1,4 @@
-<div class="main-wrapper" *ngIf="noteCategoeyList.length>0">
+<div class="main-wrapper">
     <br>;&nbsp;&nbsp;
     <button class="modal-trigger btn modal-close waves-effect waves-green green" href="#categoryMpdal">
         <span>
@@ -20,10 +20,15 @@
                 </button>
             </div>
             <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header"><i class="material-icons left">add</i>All</div>  
+                </li>
                 <li *ngFor="let ml of noteCategoeyList">
                     <div class="collapsible-header"><i class="material-icons left">add</i>{{ml.name}}</div>
                 </li>
                 <div class="collapsible-body">
+                    <a  (click)="sidenav.toggle()" routerLink="" class="w100">
+                        <i class="material-icons left">remove</i>All</a>
                     <a *ngFor="let xx of noteCategoeyList" (click)="sidenav.toggle()" routerLink="" class="w100">
                         <i class="material-icons left">remove</i>{{xx.name}}</a>
                 </div>
@@ -41,8 +46,13 @@
                             <button mat-icon-button class="mobileMenuButton">
                                 <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
                             </button>
+                            <span  class="desktopMenuButton">
+                                <a mat-button class="nav-button text-capitalize" routerLink="">
+                                    &nbsp;All&nbsp;
+                                </a>
+                            </span>
                             <span *ngFor="let ml of noteCategoeyList" class="desktopMenuButton">
-                                <a mat-button class="nav-button text-capitalize" routerLink="./{{ml.id}}">
+                                <a mat-button class="nav-button text-capitalize" routerLink="./note/{{ml.id}}">
                                     &nbsp;{{ml.name}}&nbsp;
                                 </a>
                             </span>

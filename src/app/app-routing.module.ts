@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { NoteComponent } from './note/note.component';
 
 
 // Auth Guard
@@ -24,6 +25,10 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent,
+      },
+      {
+        path: 'note/:id',
+        component: NoteComponent,
       },
       {
         path: '',

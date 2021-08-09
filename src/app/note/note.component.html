@@ -1,0 +1,43 @@
+<div class="container">
+    <br><br><br><br>
+    <h3 class="text-center mt-5 mb-5">
+        <b>List of Notes</b>
+    </h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id
+                    <span class="material-icons"></span>
+                </th>
+                <th>Title
+                    <span class="material-icons"></span>
+                </th>
+                <th>Category
+                    <span class="material-icons"></span>
+                </th>
+                <th>Content
+                    <span class="material-icons"></span>
+                </th>
+                <th>LastUpdated
+                    <span class="material-icons"></span>
+                </th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let note of noteInfoList">
+                <th scope="row">{{note.id}}</th>
+                <td>{{note.title}}</td>
+                <td>{{note.noteCategory.name}}</td>
+                <td>{{note.content}}</td>
+                <td>{{note.createdAt}}</td>
+                <td>
+                    <button class="btn btn-small" (click)="editNote(note.id)"><span class="material-icons left"
+                            title="Edit">edit</span></button>&nbsp;
+                    <button class="btn btn-small" (click)="deleteNote(note.id)"><span class="material-icons left"
+                            title="Delete">delete</span></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
