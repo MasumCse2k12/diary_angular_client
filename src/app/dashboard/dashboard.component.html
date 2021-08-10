@@ -43,9 +43,9 @@
                 <td>{{note.content}}</td>
                 <td>{{note.createdAt}}</td>
                 <td>
-                    <button class="btn btn-small" (click)="editNote(note.id)"><span class="material-icons left"
+                    <button class="btn btn-small modal-trigger btn modal-close waves-effect waves-green green" href="#editNoteInfoModal" (click)="editNoteInfo(note.id)"><span class="material-icons left"
                             title="Edit">edit</span></button>&nbsp;
-                    <button class="btn btn-small" (click)="deleteNote(note.id)"><span class="material-icons left" 
+                    <button class="btn btn-small modal-trigger btn btn-small waves-effect waves-red red" href="#deleteNoteInfoModal" (click)="deleteNoteInfo(note.id)"><span class="material-icons left" 
                             title="Delete">delete</span></button>
                 </td>
             </tr>
@@ -55,4 +55,65 @@
     <div class="d-flex justify-content-center">
     </div>
 
+</div>
+
+<div id="editNoteInfoModal" class="modal">
+    <form [formGroup]="noteInfoGroup" class="row mb-0" (ngSubmit)="onSubmitEditNoteInfo()">
+        <div class="modal-content">
+            <h3><b>Note Info</b></h3>
+            <hr>
+            <div class="row">
+                <br>
+                <div class="col s12">
+                    <input id="id" #id formControlName="id" type="hidden" class="validate">
+                    <div class="input-field">
+                        <select class="browser-default" id="category" #category formControlName="category" >
+                            <option value="0">Select Note Category</option>
+                        <option *ngFor="let category of noteCategoeyList" [value]="category.id">
+                            {{ category.name }}
+                        </option>
+                       </select>
+                        
+                    </div>
+                    <div class="input-field">
+                        <input id="title" #title formControlName="title" type="text" class="validate" required>
+                        <label for="title">Title</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="content" #content formControlName="content" type="text" class="validate"
+                            required>
+                        <label for="content">Content</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn modal-close waves-effect waves-green green"><i
+                    class="material-icons left">save</i>Submit</button>&nbsp;&nbsp;
+            <button type="button" class="btn modal-close waves-effect waves-red red"><i
+                    class="material-icons left">close</i>Close</button>
+        </div>
+    </form>
+</div>
+
+<div id="deleteNoteInfoModal" class="modal">
+    <form [formGroup]="noteInfoGroup" class="row mb-0" (ngSubmit)="submitDeleteNoteInfo()">
+        <div class="modal-content">
+            <h3><b>Note Info</b></h3>
+            <hr>
+            <div class="row">
+                <br>
+                <div class="col s12">
+                    <input id="id" #id formControlName="id" type="hidden" class="validate">
+                    <h1>Are you sure you want to delete the selected Note ?</h1>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn modal-close waves-effect waves-green green"><i
+                    class="material-icons left">save</i>Submit</button>&nbsp;&nbsp;
+            <button type="button" class="btn modal-close waves-effect waves-red red"><i
+                    class="material-icons left">close</i>Close</button>
+        </div>
+    </form>
 </div>

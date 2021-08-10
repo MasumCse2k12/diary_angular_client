@@ -72,4 +72,15 @@ export class NoteService {
         })
       );
   }
+
+  deleteNoteINfo(request: any) {
+    // console.log(JSON.parse(request));
+    return this.http
+      .post<ApiResponse>(environment.diaryapi + '/diaryapi/note/info/delete', request)
+      .pipe(
+        catchError((error) => {
+          return throwError(error.message);
+        })
+      );
+  }
 }

@@ -6,7 +6,7 @@
         </span>
     </button>
     &nbsp;&nbsp;
-    <button class="modal-trigger btn modal-close waves-effect waves-green green" href="#noteInfoModal">
+    <button (click)="createNote()" class="modal-trigger btn modal-close waves-effect waves-green green" href="#noteInfoModal">
         <span>
             <mat-icon>add</mat-icon>&nbsp;&nbsp;Add Note
         </span>
@@ -87,7 +87,7 @@
 
 <div id="profileModal" class="modal">
     <div class="modal-content">
-        <h6><b>User Profile</b></h6>
+        <h3><b>User Profile</b></h3>
         <hr>
         <table>
             <tr>
@@ -113,7 +113,7 @@
 <div id="categoryMpdal" class="modal">
     <form [formGroup]="categoryGroup" class="row mb-0" (ngSubmit)="onSubmitNoteCategory()">
         <div class="modal-content">
-            <h6><b>Note Category</b></h6>
+            <h3><b>Note Category</b></h3>
             <hr>
             <div class="row">
                 <br>
@@ -138,14 +138,14 @@
 <div id="noteInfoModal" class="modal">
     <form [formGroup]="noteInfoGroup" class="row mb-0" (ngSubmit)="onSubmitNoteInfo()">
         <div class="modal-content">
-            <h6><b>Note Info</b></h6>
+            <h3><b>Note Info</b></h3>
             <hr>
             <div class="row">
                 <br>
                 <div class="col s12">
-                    <input id="username" #username formControlName="username" type="hidden" class="validate">
+                    <input id="id" #id formControlName="id" type="hidden" class="validate">
                     <div class="input-field">
-                        <select class="browser-default" id="category" formControlName="category" >
+                        <select class="browser-default" id="category" #category formControlName="category" >
                             <option value="0">Select Note Category</option>
                         <option *ngFor="let category of noteCategoeyList" [value]="category.id">
                             {{ category.name }}
@@ -154,11 +154,11 @@
                         
                     </div>
                     <div class="input-field">
-                        <input id="title" formControlName="title" type="text" class="validate" required>
+                        <input id="title" #title formControlName="title" type="text" class="validate" required>
                         <label for="title">Title</label>
                     </div>
                     <div class="input-field">
-                        <input id="content" formControlName="content" type="text" class="validate"
+                        <input id="content" #content formControlName="content" type="text" class="validate"
                             required>
                         <label for="content">Content</label>
                     </div>

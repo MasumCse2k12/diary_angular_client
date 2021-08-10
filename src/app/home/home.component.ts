@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
         this.noteCategoeyList = new Array;
         this.noteInfoList = new Array;
         this.noteInfoGroup = this.formBuilder.group({
-            username: [this.loggedInUserData.username],
+            id: [0],
             category: ['', Validators.required],
             title: ['', Validators.required],
             content: ['', Validators.required],
@@ -141,7 +141,7 @@ export class HomeComponent implements OnInit {
 
         this.noteService.searchNoteCategory(request).subscribe(
             (response) => {
-                console.log("categoryList" + JSON.stringify(response));
+                console.log("categoryList from home " + JSON.stringify(response));
                 if (response.success) {
                     this.errorMessage = '';
                     this.noteCategoeyList = response.categoryList;
@@ -166,7 +166,7 @@ export class HomeComponent implements OnInit {
 
         this.noteService.searchNoteInfo(request).subscribe(
             (response) => {
-                console.log("noteInfoList :" + JSON.stringify(response));
+                // console.log("noteInfoList :" + JSON.stringify(response));
                 if (response.success) {
                     this.errorMessage = '';
                     this.noteInfoList = response.noteInfoList;
@@ -206,13 +206,27 @@ export class HomeComponent implements OnInit {
 
     navigateToHome() {
         this.router.navigate(['home/dashboard']);
-      }
+    }
 
-      reloadCurrentRoute() {
+    reloadCurrentRoute() {
         let currentUrl = this.router.url;
-        this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
             this.router.navigate([currentUrl]);
         });
+    }
+
+    createNote() {
+        console.warn("createNote called! ");
+        this.noteInfoGroup = this.formBuilder.group({
+            id: [0],
+            category: ['', Validators.required],
+            title: ['', Validators.required],
+            content: ['', Validators.required],
+        });
+    }
+
+    getNoteById(data: any) {
+        console.warn("getNoteById from child " + data);
     }
 
 }
